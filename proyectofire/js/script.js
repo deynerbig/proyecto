@@ -52,11 +52,24 @@ const cargarDatos =()=>{
             estructura+="<td>"+p.correo+"</td>"
             estructura+="<td>"+p.edad+"</td>"
             estructura+="<td>"+p.fecha+"</td>"
-            estructura+="<td><button '"+p.id+"'>actualizar</button></td>"
-            estructura+="<td><button >eliminar</button></td>"
-            estructura+="</tr>"
+            estructura+="<td><button 'UPD"+p.id+"'>actualizar</button></td>"
+            estructura+="<td><button id='DEL"+p.id+"'>eliminar</button></td>"
+            estructura+="</tr>";
         });
         document.getElementById("cuerpoTabla").innerHTML=estructura;
+
+        personas.forEach((p)=>{
+            let elemento = document.getElementById("UPD"+p.id);
+            elemento.addEventListener("click",()=>{
+                document.getElementById("UPDnombre").value=p.nombre;
+                document.getElementById("UPDapellido").value=p.apellido;
+                document.getElementById("UPDrut").value=p.rut;
+                document.getElementById("UPDcorreo").value=p.correo;
+                document.getElementById("UPDedad").value=p.edad;
+                document.getElementById("UPDfecha").value=p.fecha;
+                document.getElementById("btnActualizar").value=p.id;
+            })  
+        })
     })
 //cargarlo en la tabla del html
 }
